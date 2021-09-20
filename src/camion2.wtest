@@ -1,0 +1,45 @@
+import cosas2.*
+import camion2.*
+
+describe "Tests de Camion2" {
+	
+	method initialize(){
+		arenaGranel.setPeso(10)
+		residuos.setPeso(10)
+		contenedor.cargar(residuos)
+	}
+	
+	test "Contabilizar cantidad de bultos" {
+		camion.cargar(bumblebee)
+		camion.cargar(arenaGranel)
+		camion.cargar(contenedor)
+		assert.equals(5, camion.totalBultos())
+	}
+	
+	test "Cargar bumblebee a camion lo transforma en robot"{
+		assert.equals(15, bumblebee.nivelPeligrosidad())
+		camion.cargar(bumblebee)
+		assert.equals(30, bumblebee.nivelPeligrosidad())
+	}
+	test "Cargar paquete de ladrillos a camion aumenta en 12 su cantidad"{
+		assert.equals(0, paqueteLadrillos.peso())
+		camion.cargar(paqueteLadrillos)
+		assert.equals(24, paqueteLadrillos.peso())
+	}
+	test "Cargar arena a camion aumenta su peso en 20kg"{
+		assert.equals(10, arenaGranel.peso())
+		camion.cargar(arenaGranel)
+		assert.equals(30, arenaGranel.peso())
+	}
+	test "Cargar bateria antiaerea a camion carga sus misiles"{
+		assert.equals(0, bateriaAntiaerea.nivelPeligrosidad())
+		camion.cargar(bateriaAntiaerea)
+		assert.equals(100, bateriaAntiaerea.nivelPeligrosidad())
+	}
+	test "Cargar contenedor cambia estado de lo que contiene"{
+		assert.equals(10, residuos.peso())
+		camion.cargar(contenedor)
+		assert.equals(25, residuos.peso())
+	}
+	
+}

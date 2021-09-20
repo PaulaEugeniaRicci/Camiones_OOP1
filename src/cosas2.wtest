@@ -1,0 +1,42 @@
+import cosas2.*
+
+describe "Tests de Cosas2" {
+	
+	method initialize(){
+		contenedor.cargar(knightRider)
+		contenedor.cargar(embalaje)
+		contenedor.cargar(bateriaAntiaerea)
+	}
+	
+	test "Arena a granel es un bulto"{
+		assert.equals(1, arenaGranel.cantBultos())
+	}
+	test "Residuos radiactivos es un bulto"{
+		assert.equals(1, residuos.cantBultos())
+	}
+	test "Bumblebee es 2 bultos"{
+		assert.equals(2, bumblebee.cantBultos())
+	}
+	test "Paquete de ladrillos es 1 bulto hasta 100 ladrillos"{
+		paqueteLadrillos.setCantidad(100)
+		assert.equals(1, paqueteLadrillos.cantBultos())
+	}
+	test "Paquete de ladrillos es 2 bultos hasta 300 ladrillos"{
+		paqueteLadrillos.setCantidad(300)
+		assert.equals(2, paqueteLadrillos.cantBultos())
+	}
+	test "Paquete de ladrillos es 3 bultos para más de 300 ladrillos"{
+		paqueteLadrillos.setCantidad(301)
+		assert.equals(3, paqueteLadrillos.cantBultos())
+	}
+	test "Bateria Antiaerea es 2 bultos si tiene los misiles"{
+		bateriaAntiaerea.misiles()
+		assert.equals(2, bateriaAntiaerea.cantBultos())
+	}
+	test "Bultos de contenedor portuario"{
+		assert.equals(5, contenedor.cantBultos())
+	}
+	
+
+	
+}

@@ -1,9 +1,17 @@
-import cosas.*
+import cosas2.*
 
 object camion {
 	const property cosas = []
 	
-	method cargar(unaCosa){ cosas.add(unaCosa) }
+	method cargar(unaCosa){ 
+		
+		cosas.add(unaCosa)
+		unaCosa.sufrirCambios()
+	}
+	
+	method totalBultos(){
+		return cosas.sum({unaCosa=> unaCosa.cantBultos()})
+	}
 	
 	method descargar(unaCosa){ cosas.remove(unaCosa) }
 	
