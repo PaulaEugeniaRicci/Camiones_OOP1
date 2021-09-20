@@ -1,0 +1,52 @@
+import cosas.*
+import camion.*
+
+describe "Tests de Camion" {
+	
+	method initialize(){
+		
+		bumblebee.transformar()
+		arenaGranel.setPeso(150)
+		bateriaAntiaerea.misiles()
+		paqueteLadrillos.setCantidad(80)
+		embalaje.setObjetoEnvuelto(paqueteLadrillos)
+		camion.cargar(bumblebee)
+		camion.cargar(arenaGranel)
+		camion.cargar(bateriaAntiaerea)
+		camion.cargar(embalaje)
+	}
+	
+	test "Todo el peso es par"{
+		assert.that(camion.todoPesoPar())
+	}
+	test "Hay alguno que pesa 150"{
+		assert.that(camion.hayAlgunoQuePesa(150))
+	}
+	test "El de nivel de peligrosidad 30"{
+		assert.equals(bumblebee, camion.elDeNivel(30))
+	}
+	test "Peso total del camion"{
+		assert.equals(2410, camion.pesoTotal())
+	}
+	test "Camion excedido de peso"{
+		assert.notThat(camion.excedidoDePeso())
+	}
+	test "Objetos de peligrosidad mayor a 20"{
+		assert.equals([bumblebee, bateriaAntiaerea], camion.objetosQueSuperanPeligrosidad(20))
+	}
+	test "Objetos mas peligroso que bumblebee"{
+		assert.equals([bateriaAntiaerea], camion.objetosMasPeligrososQue(bumblebee))
+	}
+	test "Camion no puede circular en ruta si max nivel de peligrosidad es 40"{
+		assert.notThat(camion.puedeCircularEnRuta(40))
+	}
+	test "Camion tiene algo que pesa entre 150 y 170"{
+		assert.that(camion.tieneAlgoQuePesaEntre(150,170))
+	}
+	test "El objeto mas pesado del camion"{
+		assert.equals(bumblebee, camion.cosaMasPesada())
+	}
+	test "Peso de cada objeto que lleva el camion"{
+		assert.equals([800, 150, 300, 160], camion.pesos())
+	}
+}

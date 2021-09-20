@@ -1,0 +1,42 @@
+import cosas.*
+
+describe "Tests de cosas" {
+
+	method initialize(){
+		residuos.setPeso(30)
+		embalaje.setObjetoEnvuelto(residuos)
+		paqueteLadrillos.setCantidad(20)
+		bateriaAntiaerea.misiles()
+		contenedor.cargar(embalaje)
+		contenedor.cargar(paqueteLadrillos)
+		contenedor.cargar(bateriaAntiaerea)
+	}
+	
+	test "Peso de paquete de Ladrillos"{
+		assert.equals(40, paqueteLadrillos.peso())
+	}
+	test "Peligrosidad de paquete de Ladrillos"{
+		assert.equals(2, paqueteLadrillos.nivelPeligrosidad())
+	}
+	test "Peso de paquete de Bateria Antiaerea"{
+		assert.equals(300, bateriaAntiaerea.peso())
+	}
+	test "Peligrosidad de Bateria Antiaerea"{
+		assert.equals(100, bateriaAntiaerea.nivelPeligrosidad())
+	}
+	test "Peso de paquete de embalaje"{
+		assert.equals(30, embalaje.peso())
+	}
+	test "Peligrosidad de embalaje"{
+		assert.equals(100, embalaje.nivelPeligrosidad())
+	}
+	test "Peso de paquete de contenedor portuario"{
+		assert.equals(470, contenedor.peso())
+	}
+	test "Peligrosidad de contenedor portuario"{
+		assert.equals(100, contenedor.nivelPeligrosidad())
+	}
+	
+	
+
+}
